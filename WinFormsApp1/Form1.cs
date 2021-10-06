@@ -35,20 +35,37 @@ namespace WinFormsApp1
         private void BtnSelect_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            //openFileDialog.Filter = "Image Files(jpg/png/gif/bmp)|.jpg;.jpeg;.png; *.gif;.bmp;";
 
+            //set initial directory for the 'select folder'
+            openFileDialog.InitialDirectory = @"C:\";
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp;*.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
+
+            //format current date and time
+            string currentDateTime = DateTime.Now.ToString("dd-MM-yyyy_HHmmss");
+
+            //create new folder named as current date and time
+            string UploadFolder = Path.Combine(@"Upload\", currentDateTime);
+            Directory.CreateDirectory(UploadFolder);
+
+            //create pass folder under newly created folder
+            string passFolder = Path.Combine(UploadFolder, "Pass");
+            Directory.CreateDirectory(passFolder);
+
+            //create fail folder under newly created folder
+            string failFolder = Path.Combine(UploadFolder, "Fail");
+            Directory.CreateDirectory(failFolder);
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string UploadFolder = Path.Combine(@"Upload\");
+                //get last modified folder
+                DirectoryInfo latestFolder = new DirectoryInfo(@"Upload\").GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
 
                 foreach (string fileName in openFileDialog.FileNames)
                 {
-
                     try
                     {
-                        File.Copy(fileName, UploadFolder + Path.GetFileName(fileName));
+                        File.Copy(fileName, Path.Combine(latestFolder.ToString(), Path.GetFileName(fileName)));
                     }
 
                     catch (Exception ex)

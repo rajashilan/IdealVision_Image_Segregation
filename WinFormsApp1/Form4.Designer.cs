@@ -39,6 +39,8 @@ namespace WinFormsApp1
             this.ImageUploadCounter = new System.Windows.Forms.Label();
             this.FailBtn = new System.Windows.Forms.Button();
             this.PassBtn = new System.Windows.Forms.Button();
+            this.uploadBtn = new System.Windows.Forms.Button();
+            this.imgCounter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +139,25 @@ namespace WinFormsApp1
             this.PassBtn.TabIndex = 14;
             this.PassBtn.Text = "Pass";
             this.PassBtn.UseVisualStyleBackColor = false;
+            this.PassBtn.Click += new System.EventHandler(this.PassBtn_Click);
+            // 
+            // uploadBtn
+            // 
+            this.uploadBtn.Location = new System.Drawing.Point(460, 31);
+            this.uploadBtn.Name = "uploadBtn";
+            this.uploadBtn.Size = new System.Drawing.Size(94, 29);
+            this.uploadBtn.TabIndex = 15;
+            this.uploadBtn.Text = "Upload";
+            this.uploadBtn.UseVisualStyleBackColor = true;
+            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
+            // 
+            // imgCounter
+            // 
+            this.imgCounter.Location = new System.Drawing.Point(644, 377);
+            this.imgCounter.Name = "imgCounter";
+            this.imgCounter.Size = new System.Drawing.Size(81, 27);
+            this.imgCounter.TabIndex = 16;
+            this.imgCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form4
             // 
@@ -144,6 +165,8 @@ namespace WinFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(955, 523);
+            this.Controls.Add(this.imgCounter);
+            this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.PassBtn);
             this.Controls.Add(this.FailBtn);
             this.Controls.Add(this.ImageUploadCounter);
@@ -173,5 +196,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label ImageUploadCounter;
         private System.Windows.Forms.Button FailBtn;
         private System.Windows.Forms.Button PassBtn;
+        private System.Windows.Forms.Button uploadBtn;
+        private System.Windows.Forms.TextBox imgCounter;
     }
 }
