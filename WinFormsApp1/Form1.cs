@@ -18,6 +18,8 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
+        public String Value { get; set; }
+
         private void BtnResume_Click(object sender, EventArgs e)
         {
             Form2 fm = new Form2();
@@ -27,9 +29,18 @@ namespace WinFormsApp1
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            Form3 fm = new Form3();
-            fm.Show();
-            this.Hide();
+
+            FolderBrowserDialog FDB = new FolderBrowserDialog();
+            FDB.SelectedPath = Path.GetFullPath(@"Upload\");
+            if (FDB.ShowDialog() == DialogResult.OK)
+            {
+                string currentpath = Path.Combine(FDB.SelectedPath + @"\Fail\");
+                Form5 fm = new Form5(currentpath);
+                fm.Show();
+                this.Hide();
+            }
+
+            
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
@@ -73,6 +84,8 @@ namespace WinFormsApp1
                         MessageBox.Show("Reported error: " + ex.Message);
                     }
                 }
+
+                
 
                 Form4 fm = new Form4();
                 fm.Show();

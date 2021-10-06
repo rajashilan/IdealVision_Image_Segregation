@@ -93,8 +93,9 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form6 fm6 = new Form6();
-            fm6.Show();
+            Form6 fm = new Form6();
+            fm.Show();
+            this.Hide();
         }
 
         private void PassBtn_Click(object sender, EventArgs e)

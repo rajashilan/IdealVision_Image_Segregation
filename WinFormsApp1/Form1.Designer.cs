@@ -81,9 +81,9 @@ namespace WinFormsApp1
             this.BtnEdit.ForeColor = System.Drawing.Color.White;
             this.BtnEdit.Location = new System.Drawing.Point(147, 211);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(158, 23);
+            this.BtnEdit.Size = new System.Drawing.Size(158, 41);
             this.BtnEdit.TabIndex = 3;
-            this.BtnEdit.Text = "Edit Defect Categories";
+            this.BtnEdit.Text = "Edit Defect Categories (Select Session)";
             this.BtnEdit.UseVisualStyleBackColor = false;
             this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
