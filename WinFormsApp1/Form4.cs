@@ -161,5 +161,16 @@ namespace WinFormsApp1
             FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
             passCounter.Text = file.Length.ToString();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
+            FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
+            failCounter.Text = file.Length.ToString();
+
+            DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
+            FileInfo[] files = d.GetFiles("*", SearchOption.AllDirectories);
+            passCounter.Text = files.Length.ToString();
+        }
     }
 }

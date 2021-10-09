@@ -75,13 +75,20 @@ namespace WinFormsApp1
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            foreach(string item in listBoxFailCategories.SelectedItems)
+            if (listBoxFailCategories.SelectedIndex == -1)
             {
-                string defectFolder = Path.Combine(Value, item);
-                File.Copy(Image, Path.Combine(defectFolder, Path.GetFileName(Image)), true);
-                this.Close();
+                MessageBox.Show("Please select any defect category");
             }
-            File.Delete(Image);
+            else
+            {
+                foreach (string item in listBoxFailCategories.SelectedItems)
+                {
+                    string defectFolder = Path.Combine(Value, item);
+                    File.Copy(Image, Path.Combine(defectFolder, Path.GetFileName(Image)), true);
+                    this.Close();
+                }
+                File.Delete(Image);
+            }
         }
 
         private void label2_Click_1(object sender, EventArgs e)
