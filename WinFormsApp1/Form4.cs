@@ -18,9 +18,12 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        //proceed to next image after pressing pass / fail button
-        public void incrementImage()
+
+
+    //proceed to next image after pressing pass / fail button
+    public void incrementImage()
         {
+
             nCurrentItem++;
             firstImage++;
 
@@ -28,7 +31,15 @@ namespace WinFormsApp1
                 nCurrentItem = nTotalNumber;
 
             else if (nCurrentItem < nTotalNumber)
-                PicBox.Image = Image.FromFile(ImageFilenames[nCurrentItem]);
+            {
+                Image img;
+                using (var bmpTemp = new Bitmap(ImageFilenames[nCurrentItem]))
+                {
+                    img = new Bitmap(bmpTemp);
+                }
+                PicBox.Image = img;
+
+            }
 
             imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
         }
@@ -75,7 +86,13 @@ namespace WinFormsApp1
                 {
                     string sFileName = open.FileName;
                     ImageFilenames = open.FileNames.ToList();
-                    PicBox.Image = Image.FromFile(ImageFilenames[0]);
+
+                    Image img;
+                    using (var bmpTemp = new Bitmap(ImageFilenames[0]))
+                    {
+                        img = new Bitmap(bmpTemp);
+                    }
+                    PicBox.Image = img;
 
                     //stretch images to the size of picbox
                     PicBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -93,14 +110,56 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form6 fm = new Form6();
-            fm.Show();
-            this.Hide();
+            if (PicBox.Image == null)
+            {
+                MessageBox.Show("Please upload images.");
+            }
+            else { 
+                try
+                {
+                    string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+                    string img = ImageFilenames[nCurrentItem];
+
+                    Form6 fm = new Form6(failFolder, img);
+                    fm.Show();
+                    incrementImage();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Screening Completed");
+                }
+            }
+
+            DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
+            FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
+            failCounter.Text = file.Length.ToString();
+
+
         }
 
         private void PassBtn_Click(object sender, EventArgs e)
         {
-            incrementImage();
+            string passFolder = Path.Combine(latestSession.ToString(), "Pass");
+
+            if (PicBox.Image == null)
+            {
+                MessageBox.Show("Please upload images.");
+            }
+            else
+            {
+                try
+                {
+                    File.Move(ImageFilenames[nCurrentItem], Path.Combine(passFolder, Path.GetFileName(ImageFilenames[nCurrentItem])), true);
+                    incrementImage();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Screening Completed");
+                }
+            }
+            DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
+            FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
+            passCounter.Text = file.Length.ToString();
         }
     }
 }
