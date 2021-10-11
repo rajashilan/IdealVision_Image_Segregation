@@ -23,6 +23,27 @@ namespace WinFormsApp1
         public String Value { get; set; }
         public String Image { get; set; }
 
+        public String DefectCategory { get; set; }
+
+        public String FullPathName { get; set; }
+
+        public bool added = false;
+
+        public string sendDefectCategory()
+        {
+            return DefectCategory;
+        }
+
+        public string sendPathName()
+        {
+            return FullPathName; //HANDLE IF MORE THAN 1 DEFECT CATEGORY
+        }
+
+        public bool hasValue()
+        {
+            return added;
+        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -81,12 +102,22 @@ namespace WinFormsApp1
             }
             else
             {
+                var tempDefectCategory = "";
+
                 foreach (string item in listBoxFailCategories.SelectedItems)
                 {
                     string defectFolder = Path.Combine(Value, item);
                     File.Copy(Image, Path.Combine(defectFolder, Path.GetFileName(Image)), true);
+
+                    added = true;
+
+                    tempDefectCategory = tempDefectCategory + item.ToString() + ",";
+
+                    FullPathName = Path.Combine(defectFolder, Path.GetFileName(Image));
+
                     this.Close();
                 }
+                DefectCategory = tempDefectCategory;
                 File.Delete(Image);
             }
         }
