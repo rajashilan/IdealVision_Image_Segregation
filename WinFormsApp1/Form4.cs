@@ -138,7 +138,10 @@ namespace WinFormsApp1
                     listViewFail.Items.Add(listViewItem);//add to list view
 
                     ImgFailHistory.Add(fm.sendPathName());
+                    DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
+                    FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
 
+                    failCounter.Text = file.Length.ToString();
                     nImageFailed++;
                 }
                 catch (Exception ex)
@@ -147,10 +150,7 @@ namespace WinFormsApp1
                 }
             }
 
-            DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
-            FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
-
-            failCounter.Text = file.Length.ToString();
+            
 
 
         }
