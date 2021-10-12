@@ -217,7 +217,6 @@ namespace WinFormsApp1
             {
                 int selectedIndex = listViewFail.SelectedIndices[0];
                 Form8 form8 = new Form8();
-                MessageBox.Show(selectedIndex.ToString());
                 form8.imgPathName = ImgFailHistory[selectedIndex].ToString(); //get full img pathname
                 form8.defectCategoriesList = listViewFail.SelectedItems[0].ToString();
                 form8.Show();

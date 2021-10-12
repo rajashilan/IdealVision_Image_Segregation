@@ -50,7 +50,6 @@ namespace WinFormsApp1
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.labelTest = new System.Windows.Forms.Label();
             this.labelTest1 = new System.Windows.Forms.Label();
-            this.labelTest3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -260,18 +259,8 @@ namespace WinFormsApp1
             this.labelTest1.AutoSize = true;
             this.labelTest1.Location = new System.Drawing.Point(19, 354);
             this.labelTest1.Name = "labelTest1";
-            this.labelTest1.Size = new System.Drawing.Size(38, 15);
+            this.labelTest1.Size = new System.Drawing.Size(0, 15);
             this.labelTest1.TabIndex = 23;
-            this.labelTest1.Text = "label5";
-            // 
-            // labelTest3
-            // 
-            this.labelTest3.AutoSize = true;
-            this.labelTest3.Location = new System.Drawing.Point(19, 394);
-            this.labelTest3.Name = "labelTest3";
-            this.labelTest3.Size = new System.Drawing.Size(38, 15);
-            this.labelTest3.TabIndex = 24;
-            this.labelTest3.Text = "label5";
             // 
             // Form4
             // 
@@ -279,7 +268,6 @@ namespace WinFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(836, 452);
-            this.Controls.Add(this.labelTest3);
             this.Controls.Add(this.labelTest1);
             this.Controls.Add(this.labelTest);
             this.Controls.Add(this.listViewFail);
@@ -331,6 +319,5 @@ namespace WinFormsApp1
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Label labelTest;
         private System.Windows.Forms.Label labelTest1;
-        private System.Windows.Forms.Label labelTest3;
     }
 }
