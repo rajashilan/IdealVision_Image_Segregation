@@ -131,7 +131,7 @@ namespace WinFormsApp1
                     fm.ShowDialog();
                     incrementImage();
 
-                    var imgNameTemp = ImageFilenames[nImageFailed];
+                    var imgNameTemp = ImageFilenames[nImageFailed + nImagePassed];
                     var imgName = imgNameTemp.Split(latestSession.ToString() + @"\")[1]; //img name
 
                     var listViewItem = new ListViewItem(imgName + "::" + fm.sendDefectCategory());
@@ -217,8 +217,9 @@ namespace WinFormsApp1
             {
                 int selectedIndex = listViewFail.SelectedIndices[0];
                 Form8 form8 = new Form8();
+                MessageBox.Show(selectedIndex.ToString());
                 form8.imgPathName = ImgFailHistory[selectedIndex].ToString(); //get full img pathname
-                form8.defectCategoriesList = listViewFail.SelectedItems[selectedIndex].ToString();
+                form8.defectCategoriesList = listViewFail.SelectedItems[0].ToString();
                 form8.Show();
             }
         }
