@@ -43,16 +43,15 @@ namespace WinFormsApp1
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PicBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.listViewPass = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.listViewFail = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.labelTest = new System.Windows.Forms.Label();
             this.labelTest1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -196,18 +195,6 @@ namespace WinFormsApp1
             this.PicBox.TabIndex = 10;
             this.PicBox.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(62, 94);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 16);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // listViewPass
             // 
             this.listViewPass.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -262,17 +249,27 @@ namespace WinFormsApp1
             this.labelTest1.Size = new System.Drawing.Size(0, 15);
             this.labelTest1.TabIndex = 23;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(512, 366);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 15);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Screening Completed!";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(836, 452);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.labelTest1);
             this.Controls.Add(this.labelTest);
             this.Controls.Add(this.listViewFail);
             this.Controls.Add(this.listViewPass);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.PicBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -291,7 +288,6 @@ namespace WinFormsApp1
             this.Text = "Form4";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,12 +308,12 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox PicBox;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ListView listViewPass;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ListView listViewFail;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Label labelTest;
         private System.Windows.Forms.Label labelTest1;
+        private System.Windows.Forms.Label label5;
     }
 }

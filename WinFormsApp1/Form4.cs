@@ -16,6 +16,7 @@ namespace WinFormsApp1
         public Form4()
         {
             InitializeComponent();
+            label5.Visible = false;
         }
 
 
@@ -138,19 +139,24 @@ namespace WinFormsApp1
                     listViewFail.Items.Add(listViewItem);//add to list view
 
                     ImgFailHistory.Add(fm.sendPathName());
-                    DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
-                    FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
 
-                    failCounter.Text = file.Length.ToString();
                     nImageFailed++;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Screening Completed");
+                    //MessageBox.Show("Screening Completed");
+                    label5.Visible = true;
+                    PassBtn.Visible = false;
+                    FailBtn.Visible = false;
                 }
             }
+            int fail_value = Convert.ToInt32(failCounter.Text);
+            fail_value++;
+            failCounter.Text = fail_value.ToString();
+            //DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
+            //FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
 
-            
+            //failCounter.Text = file.Length.ToString();
 
 
         }
@@ -169,35 +175,42 @@ namespace WinFormsApp1
                 {
                     File.Move(ImageFilenames[nCurrentItem], Path.Combine(passFolder, Path.GetFileName(ImageFilenames[nCurrentItem])), true);
                     incrementImage();
+
+                    DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
+                    FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
+
+                    var latestFile = file[nImagePassed].ToString();
+                    var latestFileDisplay = latestFile.Split(@"Pass\")[1];
+                    var listViewItem = new ListViewItem(latestFileDisplay);
+
+                    ImgPassHistory.Add(latestFile);//add to pass history array (full path)
+                    listViewPass.Items.Add(listViewItem);//add to list view (img name only)
+
+                    passCounter.Text = file.Length.ToString();
+                    nImagePassed++;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Screening Completed");
+                    //MessageBox.Show("Screening Completed");
+                    label5.Visible = true;
+                    PassBtn.Visible = false;
+                    FailBtn.Visible = false;
                 }
             }
-            DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
-            FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
-
-            var latestFile = file[nImagePassed].ToString();
-            var latestFileDisplay = latestFile.Split(@"Pass\")[1];
-            var listViewItem = new ListViewItem(latestFileDisplay);
-
-            ImgPassHistory.Add(latestFile);//add to pass history array (full path)
-            listViewPass.Items.Add(listViewItem);//add to list view (img name only)
-
-            passCounter.Text = file.Length.ToString();
-            nImagePassed++;
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
-            FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
-            failCounter.Text = file.Length.ToString();
+            //for the refresh button in counter, but not used already
 
-            DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
-            FileInfo[] files = d.GetFiles("*", SearchOption.AllDirectories);
-            passCounter.Text = files.Length.ToString();
+            //DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
+            //FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
+            //failCounter.Text = file.Length.ToString();
+
+            //DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
+            //FileInfo[] files = d.GetFiles("*", SearchOption.AllDirectories);
+            //passCounter.Text = files.Length.ToString();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
