@@ -37,7 +37,6 @@ namespace WinFormsApp1
                 string currentpath = Path.Combine(FDB.SelectedPath + @"\Fail\");
                 Form5 fm = new Form5(currentpath);
                 fm.Show();
-                this.Hide();
             }
 
             

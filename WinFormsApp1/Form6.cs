@@ -13,15 +13,20 @@ namespace WinFormsApp1
     public partial class Form6 : Form
     {
 
-        public Form6(string value, string img)
+        public Form6()
         {
             InitializeComponent();
-            this.Value = value;
-            this.Image = img;
         }
 
-        public String Value { get; set; }
-        public String Image { get; set; }
+        public String Value { 
+            get; 
+            set; 
+        }
+
+        public String Image { 
+            get; 
+            set; 
+        }
 
         public String DefectCategory { get; set; }
 
@@ -84,14 +89,8 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog FDB = new FolderBrowserDialog();
-            FDB.SelectedPath = Path.GetFullPath(@"Upload\");
-            if (FDB.ShowDialog() == DialogResult.OK)
-            {
-                string currentpath = Path.Combine(FDB.SelectedPath + @"\Fail\");
-                Form5 fm = new Form5(currentpath);
-                fm.Show();
-            }
+            Form9 fm = new Form9(Value);
+            fm.Show();
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -115,10 +114,10 @@ namespace WinFormsApp1
 
                     FullPathName = Path.Combine(defectFolder, Path.GetFileName(Image));
 
-                    this.Close();
                 }
                 DefectCategory = tempDefectCategory;
                 File.Delete(Image);
+                this.Close();
             }
         }
 

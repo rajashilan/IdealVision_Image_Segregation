@@ -177,5 +177,25 @@ namespace WinFormsApp1
                 listBoxFailCategories.Items.Add(Path.GetFileName(dir));
             }
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNewName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxOldName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

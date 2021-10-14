@@ -13,10 +13,13 @@ namespace WinFormsApp1
     public partial class Form4 : Form
     {
         DirectoryInfo latestSession = new DirectoryInfo(@"Upload\").GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
+
         public Form4()
         {
             InitializeComponent();
             label5.Visible = false;
+            linkLabel1.Visible = false;
+            linkLabel2.Visible = false;
         }
 
 
@@ -128,7 +131,9 @@ namespace WinFormsApp1
                     string failFolder = Path.Combine(latestSession.ToString(), "Fail");
                     string img = ImageFilenames[nCurrentItem];
 
-                    Form6 fm = new Form6(failFolder, img);
+                    Form6 fm = new Form6();
+                    fm.Value = failFolder;
+                    fm.Image = img;
                     fm.ShowDialog();
                     incrementImage();
 
@@ -146,6 +151,8 @@ namespace WinFormsApp1
                 {
                     //MessageBox.Show("Screening Completed");
                     label5.Visible = true;
+                    linkLabel1.Visible = true;
+                    linkLabel2.Visible = true;
                     PassBtn.Visible = false;
                     FailBtn.Visible = false;
                 }
@@ -193,6 +200,8 @@ namespace WinFormsApp1
                 {
                     //MessageBox.Show("Screening Completed");
                     label5.Visible = true;
+                    linkLabel1.Visible = true;
+                    linkLabel2.Visible = true;
                     PassBtn.Visible = false;
                     FailBtn.Visible = false;
                 }
@@ -235,5 +244,20 @@ namespace WinFormsApp1
                 form8.Show();
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Close();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = latestSession.ToString();
+            openFileDialog1.ShowDialog();
+        }
+
     }
 }

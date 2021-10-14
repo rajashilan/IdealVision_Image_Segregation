@@ -110,6 +110,9 @@ namespace WinFormsApp1
             this.label2.Text = "Refresh";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
+            // label3
+            // 
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
