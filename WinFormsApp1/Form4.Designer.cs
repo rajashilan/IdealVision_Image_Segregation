@@ -38,7 +38,6 @@ namespace WinFormsApp1
             this.ImageUploadCounter = new System.Windows.Forms.Label();
             this.FailBtn = new System.Windows.Forms.Button();
             this.PassBtn = new System.Windows.Forms.Button();
-            this.uploadBtn = new System.Windows.Forms.Button();
             this.imgCounter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -143,16 +142,6 @@ namespace WinFormsApp1
             this.PassBtn.Text = "Pass";
             this.PassBtn.UseVisualStyleBackColor = false;
             this.PassBtn.Click += new System.EventHandler(this.PassBtn_Click);
-            // 
-            // uploadBtn
-            // 
-            this.uploadBtn.Location = new System.Drawing.Point(459, 31);
-            this.uploadBtn.Name = "uploadBtn";
-            this.uploadBtn.Size = new System.Drawing.Size(94, 29);
-            this.uploadBtn.TabIndex = 15;
-            this.uploadBtn.Text = "Upload";
-            this.uploadBtn.UseVisualStyleBackColor = true;
-            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
             // 
             // imgCounter
             // 
@@ -299,7 +288,6 @@ namespace WinFormsApp1
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.imgCounter);
-            this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.PassBtn);
             this.Controls.Add(this.FailBtn);
             this.Controls.Add(this.ImageUploadCounter);
@@ -327,7 +315,6 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label ImageUploadCounter;
         private System.Windows.Forms.Button FailBtn;
         private System.Windows.Forms.Button PassBtn;
-        private System.Windows.Forms.Button uploadBtn;
         private System.Windows.Forms.TextBox imgCounter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

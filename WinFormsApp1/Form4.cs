@@ -12,7 +12,23 @@ namespace WinFormsApp1
 {
     public partial class Form4 : Form
     {
+        //get latest modified session folder
         DirectoryInfo latestSession = new DirectoryInfo(@"Upload\").GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
+
+        //new list to store images from session folder
+        List<String> ImageFileNames = new List<String>();
+        int nTotalNumber = 0;
+        int nCurrentItem = 0;
+        int firstImage = 1;
+
+        public void endOfSession() //taken from pass and fail button catch section
+        {
+            imgCounter.Visible = false;
+            linkLabel1.Visible = true;
+            linkLabel2.Visible = true;
+            PassBtn.Visible = false;
+            FailBtn.Visible = false;
+        }
 
         public Form4()
         {
@@ -20,29 +36,62 @@ namespace WinFormsApp1
             label5.Visible = false;
             linkLabel1.Visible = false;
             linkLabel2.Visible = false;
+
+            String sessionFolder = latestSession.ToString();
+            ImageFileNames = Directory.GetFiles(sessionFolder).ToList();
+
+            try
+            {
+                Image image;
+                using (var bmpTemp = new Bitmap(ImageFileNames[0]))
+                {
+                    image = new Bitmap(bmpTemp);
+                }
+                PicBox.Image = image;
+                PicBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            } catch (Exception e)
+            {
+                string noImages = "No images found in last session folder.";
+                MessageBox.Show(noImages);
+                endOfSession();
+                
+            }
+
+            if (ImageFileNames.Count > 0)
+            {
+                nTotalNumber = ImageFileNames.Count;
+                ImageUploadCounter.Text = nTotalNumber.ToString();
+                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
+
+            }
         }
 
 
 
     //proceed to next image after pressing pass / fail button
     public void incrementImage()
-        {
+        {   
 
             nCurrentItem++;
-            firstImage++;
+            firstImage++;            
 
-            if (nCurrentItem > nTotalNumber)
-                nCurrentItem = nTotalNumber;
+            if (nCurrentItem > nTotalNumber) 
+                nCurrentItem = nTotalNumber;          
 
             else if (nCurrentItem < nTotalNumber)
             {
                 Image img;
-                using (var bmpTemp = new Bitmap(ImageFilenames[nCurrentItem]))
+                using (var bmpTemp = new Bitmap(ImageFileNames[nCurrentItem]))
                 {
                     img = new Bitmap(bmpTemp);
                 }
                 PicBox.Image = img;
 
+            } 
+            else if (nCurrentItem == nTotalNumber) //added this, not sure if try and catch in pass and fail still needed
+            {
+                label5.Visible = true;
+                endOfSession();
             }
 
             imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
@@ -70,10 +119,8 @@ namespace WinFormsApp1
         }
 
         //load images
-        int nTotalNumber = 0;
-        int nCurrentItem = 0;
-        int firstImage = 1;
-        List<string> ImageFilenames = new List<string>();
+        
+        //List<string> ImageFilenames = new List<string>();
         string uploadDir = Path.Combine(@"Upload\");
 
         //pass image history
@@ -83,41 +130,6 @@ namespace WinFormsApp1
         //fail image history
         int nImageFailed = 0;
         List<string> ImgFailHistory = new List<string>();
-
-        private void uploadBtn_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog open = new OpenFileDialog())
-            {
-                open.Multiselect = true;
-
-                //set the initial directory to last modified folder
-                open.InitialDirectory = latestSession.ToString();
-                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp;*.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
-                if (open.ShowDialog() == DialogResult.OK)
-                {
-                    string sFileName = open.FileName;
-                    ImageFilenames = open.FileNames.ToList();
-
-                    Image img;
-                    using (var bmpTemp = new Bitmap(ImageFilenames[0]))
-                    {
-                        img = new Bitmap(bmpTemp);
-                    }
-                    PicBox.Image = img;
-
-                    //stretch images to the size of picbox
-                    PicBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-
-            }
-            if (ImageFilenames.Count > 0)
-            {
-                nTotalNumber = ImageFilenames.Count;
-                ImageUploadCounter.Text = nTotalNumber.ToString();
-                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
-
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -129,7 +141,7 @@ namespace WinFormsApp1
                 try
                 {
                     string failFolder = Path.Combine(latestSession.ToString(), "Fail");
-                    string img = ImageFilenames[nCurrentItem];
+                    string img = ImageFileNames[nCurrentItem];
 
                     Form6 fm = new Form6();
                     fm.Value = failFolder;
@@ -137,7 +149,7 @@ namespace WinFormsApp1
                     fm.ShowDialog();
                     incrementImage();
 
-                    var imgNameTemp = ImageFilenames[nImageFailed + nImagePassed];
+                    var imgNameTemp = ImageFileNames[nImageFailed + nImagePassed];
                     var imgName = imgNameTemp.Split(latestSession.ToString() + @"\")[1]; //img name
 
                     var listViewItem = new ListViewItem(imgName + "::" + fm.sendDefectCategory());
@@ -150,11 +162,7 @@ namespace WinFormsApp1
                 catch (Exception ex)
                 {
                     //MessageBox.Show("Screening Completed");
-                    label5.Visible = true;
-                    linkLabel1.Visible = true;
-                    linkLabel2.Visible = true;
-                    PassBtn.Visible = false;
-                    FailBtn.Visible = false;
+                    endOfSession();
                 }
             }
             int fail_value = Convert.ToInt32(failCounter.Text);
@@ -180,7 +188,7 @@ namespace WinFormsApp1
             {
                 try
                 {
-                    File.Move(ImageFilenames[nCurrentItem], Path.Combine(passFolder, Path.GetFileName(ImageFilenames[nCurrentItem])), true);
+                    File.Move(ImageFileNames[nCurrentItem], Path.Combine(passFolder, Path.GetFileName(ImageFileNames[nCurrentItem])), true);
                     incrementImage();
 
                     DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
@@ -199,11 +207,7 @@ namespace WinFormsApp1
                 catch (Exception ex)
                 {
                     //MessageBox.Show("Screening Completed");
-                    label5.Visible = true;
-                    linkLabel1.Visible = true;
-                    linkLabel2.Visible = true;
-                    PassBtn.Visible = false;
-                    FailBtn.Visible = false;
+                    endOfSession();
                 }
             }
             
