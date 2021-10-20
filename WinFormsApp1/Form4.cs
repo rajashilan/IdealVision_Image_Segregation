@@ -158,6 +158,17 @@ namespace WinFormsApp1
                     ImgFailHistory.Add(fm.sendPathName());
 
                     nImageFailed++;
+
+                    int fail_value = Convert.ToInt32(failCounter.Text);
+                    fail_value++;
+                    failCounter.Text = fail_value.ToString();
+
+                    using (StreamWriter f1 = new StreamWriter(Path.Combine(failFolder + @"\FailCounter.txt")))
+                    {
+                        f1.Flush();
+                        f1.WriteLine(failCounter.Text);
+                        f1.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -165,9 +176,8 @@ namespace WinFormsApp1
                     endOfSession();
                 }
             }
-            int fail_value = Convert.ToInt32(failCounter.Text);
-            fail_value++;
-            failCounter.Text = fail_value.ToString();
+            
+
             //DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
             //FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
 
@@ -263,5 +273,9 @@ namespace WinFormsApp1
             openFileDialog1.ShowDialog();
         }
 
+        private void PicBox_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

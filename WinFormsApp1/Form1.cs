@@ -26,7 +26,7 @@ namespace WinFormsApp1
             if (Directory.GetFiles(path).Length == 0) {
                 MessageBox.Show("No session folders found. Unable to resume.");
             } else {
-                Form4 fm = new Form4();
+                Form2 fm = new Form2();
                 fm.Show();
                 this.Hide();
             }

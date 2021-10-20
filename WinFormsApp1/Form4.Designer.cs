@@ -181,6 +181,7 @@ namespace WinFormsApp1
             this.PicBox.Size = new System.Drawing.Size(526, 321);
             this.PicBox.TabIndex = 10;
             this.PicBox.TabStop = false;
+            this.PicBox.Click += new System.EventHandler(this.PicBox_Click);
             // 
             // listViewPass
             // 
