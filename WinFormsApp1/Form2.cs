@@ -79,21 +79,22 @@ namespace WinFormsApp1
         {
 
             string passCount = Path.Combine(latestSession.ToString(), "Pass");
-
             DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
             FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
 
-            var latestFile = file[nImagePassed].ToString();
-            var latestFileDisplay = latestFile.Split(@"Pass\")[1];
-            var listViewItem = new ListViewItem(latestFileDisplay);
+            
 
-            passCounter.Text = file.Length.ToString();
+            if (file != null)
+            {
+                passCounter.Text = file.Length.ToString();
+            }
 
             string failCount = Path.Combine(latestSession.ToString(), "Fail");
-            string curFile = Path.Combine(failCount + @"\FailCounter.txt");
+            string curFileFailed = Path.Combine(failCount + @"\FailCounter.txt");
 
-            if (File.Exists(curFile)) {
-                
+            if (File.Exists(curFileFailed))
+            {
+
                 using (StreamReader f1 = new StreamReader(Path.Combine(failCount + @"\FailCounter.txt")))
                 {
                     //int fail_value = Convert.ToInt32(f1.ReadLine());
