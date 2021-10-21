@@ -77,6 +77,7 @@ namespace WinFormsApp1
         //to show pass counter and fail counter
         public void getCount()
         {
+
             string passCount = Path.Combine(latestSession.ToString(), "Pass");
 
             DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
@@ -88,21 +89,25 @@ namespace WinFormsApp1
 
             passCounter.Text = file.Length.ToString();
 
-
             string failCount = Path.Combine(latestSession.ToString(), "Fail");
-            using (StreamReader f1 = new StreamReader(Path.Combine(failCount + @"\FailCounter.txt")))
-            {
-                //int fail_value = Convert.ToInt32(f1.ReadLine());
-                int failValue = int.Parse(f1.ReadLine());
-                f1.Close();
+            string curFile = Path.Combine(failCount + @"\FailCounter.txt");
 
-                failCounter.Text = failValue.ToString();
+            if (File.Exists(curFile)) {
+                
+                using (StreamReader f1 = new StreamReader(Path.Combine(failCount + @"\FailCounter.txt")))
+                {
+                    //int fail_value = Convert.ToInt32(f1.ReadLine());
+                    int failValue = int.Parse(f1.ReadLine());
+                    f1.Close();
+
+                    failCounter.Text = failValue.ToString();
+                }
             }
         }
 
 
-//proceed to next image after pressing pass / fail button
-public void incrementImage()
+        //proceed to next image after pressing pass / fail button
+        public void incrementImage()
         {
 
             nCurrentItem++;
