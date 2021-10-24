@@ -23,7 +23,7 @@ namespace WinFormsApp1
         private void BtnResume_Click(object sender, EventArgs e)
         {
             string path = @"Upload\";
-            if (Directory.GetFiles(path).Length == 0) {
+            if (Directory.GetDirectories(path).Length == 0) {
                 MessageBox.Show("No session folders found. Unable to resume.");
             } else {
                 Form2 fm = new Form2();
