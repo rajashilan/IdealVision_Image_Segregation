@@ -89,7 +89,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form9 fm = new Form9(Value);
+            Form9 fm = new Form9();
             fm.Show();
         }
 

@@ -133,31 +133,51 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (PicBox.Image == null)
-            {
-                MessageBox.Show("Please upload images.");
-            }
-            else { 
-                try
-                {
-                    string failFolder = Path.Combine(latestSession.ToString(), "Fail");
-                    string img = ImageFileNames[nCurrentItem];
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
 
-                    Form6 fm = new Form6();
-                    fm.Value = failFolder;
-                    fm.Image = img;
-                    fm.ShowDialog();
-                    incrementImage();
+            try
+            {
+
+                if (PicBox.Image == null)
+                {
+                    MessageBox.Show("Please upload images.");
+                }
+                else if (listBoxFailCategories.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please select any defect category");
+                }
+                else if (MessageBox.Show("Are u confirm with the defect categories?", "Fail image", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    var tempDefectCategory = "";
+                    string FullPathName="";
+
+                    foreach (string item in listBoxFailCategories.SelectedItems)
+                    {
+                        string defectFolder = Path.Combine(failFolder, item);
+                        File.Copy(ImageFileNames[nCurrentItem], Path.Combine(defectFolder, Path.GetFileName(ImageFileNames[nCurrentItem])), true);
+
+                        //added = true;
+
+                        tempDefectCategory = tempDefectCategory + item.ToString() + ",";
+
+                        FullPathName = Path.Combine(defectFolder, Path.GetFileName(ImageFileNames[nCurrentItem]));
+
+                    }
+                    string DefectCategory = tempDefectCategory;
+                    File.Delete(ImageFileNames[nCurrentItem]);
 
                     var imgNameTemp = ImageFileNames[nImageFailed + nImagePassed];
                     var imgName = imgNameTemp.Split(latestSession.ToString() + @"\")[1]; //img name
 
-                    var listViewItem = new ListViewItem(imgName + "::" + fm.sendDefectCategory());
+                    var listViewItem = new ListViewItem(imgName + "::" + DefectCategory);
                     listViewFail.Items.Add(listViewItem);//add to list view
 
-                    ImgFailHistory.Add(fm.sendPathName());
+                    ImgFailHistory.Add(FullPathName);
 
                     nImageFailed++;
+
+                    incrementImage();
+                    listBoxFailCategories.ClearSelected();
 
                     int fail_value = Convert.ToInt32(failCounter.Text);
                     fail_value++;
@@ -170,19 +190,20 @@ namespace WinFormsApp1
                         f1.Close();
                     }
                 }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show("Screening Completed");
-                    endOfSession();
-                }
             }
+
+            catch (Exception ex)
+            {
+                 //MessageBox.Show("Screening Completed");
+                 endOfSession();
+             }
+            
             
 
             //DirectoryInfo d2 = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Fail"));
             //FileInfo[] file = d2.GetFiles("*", SearchOption.AllDirectories);
 
             //failCounter.Text = file.Length.ToString();
-
 
         }
 
@@ -273,7 +294,42 @@ namespace WinFormsApp1
             openFileDialog1.ShowDialog();
         }
 
-        private void PicBox_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
+        {
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+
+            Form9 fm = new Form9();
+            fm.Value = failFolder;
+            fm.ShowDialog();
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+
+            listBoxFailCategories.Items.Clear();
+            string[] dirs = Directory.GetDirectories(failFolder);
+
+            foreach (string dir in dirs)
+            {
+                listBoxFailCategories.Items.Add(Path.GetFileName(dir));
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+
+            listBoxFailCategories.Items.Clear();
+            string[] dirs = Directory.GetDirectories(failFolder);
+
+            foreach (string dir in dirs)
+            {
+                listBoxFailCategories.Items.Add(Path.GetFileName(dir));
+            }
+        }
+
+        private void listBoxFailCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

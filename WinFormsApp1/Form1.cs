@@ -57,7 +57,11 @@ namespace WinFormsApp1
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp;*.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
 
-            //format current date and time
+
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                            //format current date and time
             string currentDateTime = DateTime.Now.ToString("dd-MM-yyyy_HHmmss");
 
             //create new folder named as current date and time
@@ -72,8 +76,6 @@ namespace WinFormsApp1
             string failFolder = Path.Combine(UploadFolder, "Fail");
             Directory.CreateDirectory(failFolder);
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
                 //get last modified folder
                 DirectoryInfo latestFolder = new DirectoryInfo(@"Upload\").GetDirectories().OrderByDescending(d => d.LastWriteTimeUtc).First();
 

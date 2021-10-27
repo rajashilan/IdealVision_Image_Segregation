@@ -11,10 +11,9 @@ namespace WinFormsApp1
 {
     public partial class Form9 : Form
     {
-        public Form9(string value)
+        public Form9()
         {
             InitializeComponent();
-            this.Value = value;
         }
         public String Value { get; set; }
 
@@ -159,5 +158,6 @@ namespace WinFormsApp1
                 textBox2.Text = listBox1.SelectedItem.ToString();
             }
         }
+
     }
 }
