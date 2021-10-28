@@ -36,10 +36,9 @@ namespace WinFormsApp1
             // 
             // PicBoxPassed
             // 
-            this.PicBoxPassed.Location = new System.Drawing.Point(59, 39);
-            this.PicBoxPassed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PicBoxPassed.Location = new System.Drawing.Point(67, 52);
             this.PicBoxPassed.Name = "PicBoxPassed";
-            this.PicBoxPassed.Size = new System.Drawing.Size(460, 241);
+            this.PicBoxPassed.Size = new System.Drawing.Size(526, 321);
             this.PicBoxPassed.TabIndex = 11;
             this.PicBoxPassed.TabStop = false;
             // 
@@ -48,19 +47,21 @@ namespace WinFormsApp1
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(253, 311);
+            this.label1.Location = new System.Drawing.Point(289, 415);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 21);
+            this.label1.Size = new System.Drawing.Size(76, 28);
             this.label1.TabIndex = 12;
             this.label1.Text = "Passed";
             // 
             // Form7
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 450);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(673, 600);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PicBoxPassed);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form7";
             this.Text = "Form7";
             this.Load += new System.EventHandler(this.Form7_Load);

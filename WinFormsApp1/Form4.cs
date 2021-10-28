@@ -29,6 +29,18 @@ namespace WinFormsApp1
             PassBtn.Visible = false;
             FailBtn.Visible = false;
         }
+        public void RefreshListView()
+        {
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+
+            listBoxFailCategories.Items.Clear();
+            string[] dirs = Directory.GetDirectories(failFolder);
+
+            foreach (string dir in dirs)
+            {
+                listBoxFailCategories.Items.Add(Path.GetFileName(dir));
+            }
+        }
 
         public Form4()
         {
@@ -300,23 +312,11 @@ namespace WinFormsApp1
 
             Form9 fm = new Form9();
             fm.Value = failFolder;
+            fm.MyParent = this;
             fm.ShowDialog();
         }
 
         private void Form4_Load(object sender, EventArgs e)
-        {
-            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
-
-            listBoxFailCategories.Items.Clear();
-            string[] dirs = Directory.GetDirectories(failFolder);
-
-            foreach (string dir in dirs)
-            {
-                listBoxFailCategories.Items.Add(Path.GetFileName(dir));
-            }
-        }
-
-        private void label7_Click(object sender, EventArgs e)
         {
             string failFolder = Path.Combine(latestSession.ToString(), "Fail");
 

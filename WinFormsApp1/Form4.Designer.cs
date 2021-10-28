@@ -53,7 +53,6 @@ namespace WinFormsApp1
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.listBoxFailCategories = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
             this.SuspendLayout();
@@ -296,23 +295,12 @@ namespace WinFormsApp1
             this.label6.Text = "+ Add defect categories for this session";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1360, 488);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 20);
-            this.label7.TabIndex = 43;
-            this.label7.Text = "Refresh";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1435, 670);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxFailCategories);
             this.Controls.Add(this.linkLabel2);
@@ -369,6 +357,5 @@ namespace WinFormsApp1
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ListBox listBoxFailCategories;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
     }
 }

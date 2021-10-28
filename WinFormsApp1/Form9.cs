@@ -16,6 +16,7 @@ namespace WinFormsApp1
             InitializeComponent();
         }
         public String Value { get; set; }
+        public Form MyParent { get; set; }
 
         string defect = Path.Combine(@"Defect List\");
         
@@ -75,6 +76,7 @@ namespace WinFormsApp1
                     string defectFolder = Path.Combine(Value, item);
                     Directory.CreateDirectory(defectFolder);
                 }
+                MyParent.GetType().GetMethod("RefreshListView").Invoke(MyParent, null);
                 this.Close();
             }
         }

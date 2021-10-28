@@ -49,7 +49,6 @@ namespace WinFormsApp1
             this.passCounter = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.listBoxFailCategories = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox)).BeginInit();
@@ -253,16 +252,6 @@ namespace WinFormsApp1
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1360, 488);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 20);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Refresh";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -290,7 +279,6 @@ namespace WinFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1434, 672);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxFailCategories);
             this.Controls.Add(this.linkLabel2);
@@ -341,7 +329,6 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label passCounter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBoxFailCategories;
     }

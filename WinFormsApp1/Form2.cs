@@ -302,7 +302,7 @@ namespace WinFormsApp1
             openFileDialog1.ShowDialog();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        public void RefreshListView()
         {
             string failFolder = Path.Combine(latestSession.ToString(), "Fail");
 
@@ -321,6 +321,7 @@ namespace WinFormsApp1
 
             Form9 fm = new Form9();
             fm.Value = failFolder;
+            fm.MyParent = this;
             fm.ShowDialog();
         }
 
