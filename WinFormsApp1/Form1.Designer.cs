@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsApp1
 {
-    partial class Form1
+    partial class Welcome
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,33 +29,37 @@ namespace WinFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
             this.label1 = new System.Windows.Forms.Label();
             this.BtnSelect = new System.Windows.Forms.Button();
             this.BtnResume = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(147, 103);
+            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(58, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 26);
+            this.label1.Size = new System.Drawing.Size(166, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome Back";
             // 
             // BtnSelect
             // 
-            this.BtnSelect.BackColor = System.Drawing.Color.Gold;
+            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
             this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSelect.ForeColor = System.Drawing.Color.White;
-            this.BtnSelect.Location = new System.Drawing.Point(147, 153);
+            this.BtnSelect.Location = new System.Drawing.Point(60, 91);
             this.BtnSelect.Name = "BtnSelect";
-            this.BtnSelect.Size = new System.Drawing.Size(158, 23);
+            this.BtnSelect.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.BtnSelect.Size = new System.Drawing.Size(158, 42);
             this.BtnSelect.TabIndex = 1;
             this.BtnSelect.Text = "Select Folder";
             this.BtnSelect.UseVisualStyleBackColor = false;
@@ -63,12 +67,13 @@ namespace WinFormsApp1
             // 
             // BtnResume
             // 
-            this.BtnResume.BackColor = System.Drawing.Color.Gold;
+            this.BtnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
             this.BtnResume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnResume.ForeColor = System.Drawing.Color.White;
-            this.BtnResume.Location = new System.Drawing.Point(147, 182);
+            this.BtnResume.Location = new System.Drawing.Point(60, 139);
             this.BtnResume.Name = "BtnResume";
-            this.BtnResume.Size = new System.Drawing.Size(158, 23);
+            this.BtnResume.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.BtnResume.Size = new System.Drawing.Size(158, 42);
             this.BtnResume.TabIndex = 2;
             this.BtnResume.Text = "Resume Previous Session";
             this.BtnResume.UseVisualStyleBackColor = false;
@@ -76,12 +81,13 @@ namespace WinFormsApp1
             // 
             // BtnEdit
             // 
-            this.BtnEdit.BackColor = System.Drawing.Color.Silver;
+            this.BtnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEdit.ForeColor = System.Drawing.Color.White;
-            this.BtnEdit.Location = new System.Drawing.Point(147, 211);
+            this.BtnEdit.Location = new System.Drawing.Point(60, 187);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(158, 41);
+            this.BtnEdit.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.BtnEdit.Size = new System.Drawing.Size(158, 42);
             this.BtnEdit.TabIndex = 3;
             this.BtnEdit.Text = "Edit Defect Categories (Select Session)";
             this.BtnEdit.UseVisualStyleBackColor = false;
@@ -90,27 +96,39 @@ namespace WinFormsApp1
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 113);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 53);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Form1
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.BtnEdit);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.BtnResume);
+            this.panel1.Controls.Add(this.BtnSelect);
+            this.panel1.Location = new System.Drawing.Point(168, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(278, 301);
+            this.panel1.TabIndex = 5;
+            // 
+            // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(469, 326);
+            this.ClientSize = new System.Drawing.Size(444, 301);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.BtnEdit);
-            this.Controls.Add(this.BtnResume);
-            this.Controls.Add(this.BtnSelect);
-            this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Controls.Add(this.panel1);
+            this.Name = "Welcome";
+            this.Text = "Welcome";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -121,6 +139,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Button BtnResume;
         private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

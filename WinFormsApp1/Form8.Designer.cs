@@ -39,9 +39,10 @@ namespace WinFormsApp1
             // 
             // PicBoxFailed
             // 
-            this.PicBoxFailed.Location = new System.Drawing.Point(62, 57);
+            this.PicBoxFailed.Location = new System.Drawing.Point(54, 43);
+            this.PicBoxFailed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PicBoxFailed.Name = "PicBoxFailed";
-            this.PicBoxFailed.Size = new System.Drawing.Size(526, 321);
+            this.PicBoxFailed.Size = new System.Drawing.Size(460, 241);
             this.PicBoxFailed.TabIndex = 12;
             this.PicBoxFailed.TabStop = false;
             // 
@@ -50,9 +51,9 @@ namespace WinFormsApp1
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(298, 411);
+            this.label1.Location = new System.Drawing.Point(261, 308);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 28);
+            this.label1.Size = new System.Drawing.Size(56, 21);
             this.label1.TabIndex = 13;
             this.label1.Text = "Failed";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -62,9 +63,9 @@ namespace WinFormsApp1
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(250, 467);
+            this.label2.Location = new System.Drawing.Point(219, 350);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 28);
+            this.label2.Size = new System.Drawing.Size(135, 21);
             this.label2.TabIndex = 15;
             this.label2.Text = "Defect Categories:";
             // 
@@ -76,12 +77,11 @@ namespace WinFormsApp1
             this.listViewDefectCategories.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewDefectCategories.HideSelection = false;
             this.listViewDefectCategories.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listViewDefectCategories.Location = new System.Drawing.Point(165, 512);
-            this.listViewDefectCategories.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listViewDefectCategories.Location = new System.Drawing.Point(144, 384);
             this.listViewDefectCategories.MultiSelect = false;
             this.listViewDefectCategories.Name = "listViewDefectCategories";
             this.listViewDefectCategories.ShowGroups = false;
-            this.listViewDefectCategories.Size = new System.Drawing.Size(329, 95);
+            this.listViewDefectCategories.Size = new System.Drawing.Size(288, 72);
             this.listViewDefectCategories.TabIndex = 21;
             this.listViewDefectCategories.UseCompatibleStateImageBehavior = false;
             this.listViewDefectCategories.View = System.Windows.Forms.View.List;
@@ -92,17 +92,16 @@ namespace WinFormsApp1
             // 
             // Form8
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(648, 644);
+            this.ClientSize = new System.Drawing.Size(567, 483);
             this.Controls.Add(this.listViewDefectCategories);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PicBoxFailed);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form8";
-            this.Text = "Form8";
+            this.Text = "Failed Image History";
             this.Load += new System.EventHandler(this.Form8_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxFailed)).EndInit();
             this.ResumeLayout(false);

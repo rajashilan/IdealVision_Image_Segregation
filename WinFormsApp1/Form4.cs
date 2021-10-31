@@ -74,7 +74,9 @@ namespace WinFormsApp1
                 nTotalNumber = ImageFileNames.Count;
                 ImageUploadCounter.Text = nTotalNumber.ToString();
                 imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
-
+                progressBarCounter.Maximum = nTotalNumber;
+                progressBarCounter.Value = 1;
+                progressBarCounter.Step = 1;
             }
         }
 
@@ -85,7 +87,8 @@ namespace WinFormsApp1
         {   
 
             nCurrentItem++;
-            firstImage++;            
+            firstImage++;
+            progressBarCounter.PerformStep();
 
             if (nCurrentItem > nTotalNumber) 
                 nCurrentItem = nTotalNumber;          
@@ -294,7 +297,7 @@ namespace WinFormsApp1
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form1 form1 = new Form1();
+            Welcome form1 = new Welcome();
             form1.Show();
             this.Close();
         }
@@ -330,6 +333,11 @@ namespace WinFormsApp1
         }
 
         private void listBoxFailCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

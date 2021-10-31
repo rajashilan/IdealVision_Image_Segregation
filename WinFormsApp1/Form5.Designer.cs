@@ -52,9 +52,9 @@ namespace WinFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(183, 100);
+            this.label3.Location = new System.Drawing.Point(160, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 23);
+            this.label3.Size = new System.Drawing.Size(131, 19);
             this.label3.TabIndex = 24;
             this.label3.Text = "Defect Categories";
             // 
@@ -62,11 +62,10 @@ namespace WinFormsApp1
             // 
             this.TBoxDefect.BackColor = System.Drawing.Color.Gainsboro;
             this.TBoxDefect.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.TBoxDefect.Location = new System.Drawing.Point(593, 129);
-            this.TBoxDefect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TBoxDefect.Location = new System.Drawing.Point(519, 97);
             this.TBoxDefect.Multiline = true;
             this.TBoxDefect.Name = "TBoxDefect";
-            this.TBoxDefect.Size = new System.Drawing.Size(371, 225);
+            this.TBoxDefect.Size = new System.Drawing.Size(325, 170);
             this.TBoxDefect.TabIndex = 23;
             this.TBoxDefect.Text = "Key in new defect categories";
             this.TBoxDefect.Enter += new System.EventHandler(this.TBoxDefect_Enter);
@@ -74,13 +73,12 @@ namespace WinFormsApp1
             // 
             // BtnCancel
             // 
-            this.BtnCancel.BackColor = System.Drawing.Color.LightGray;
+            this.BtnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.ForeColor = System.Drawing.Color.White;
-            this.BtnCancel.Location = new System.Drawing.Point(717, 403);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnCancel.Location = new System.Drawing.Point(685, 289);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(129, 31);
+            this.BtnCancel.Size = new System.Drawing.Size(113, 40);
             this.BtnCancel.TabIndex = 22;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = false;
@@ -88,13 +86,12 @@ namespace WinFormsApp1
             // 
             // BtnAdd
             // 
-            this.BtnAdd.BackColor = System.Drawing.Color.Gold;
+            this.BtnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
             this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd.ForeColor = System.Drawing.Color.White;
-            this.BtnAdd.Location = new System.Drawing.Point(717, 364);
-            this.BtnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnAdd.Location = new System.Drawing.Point(558, 289);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(129, 31);
+            this.BtnAdd.Size = new System.Drawing.Size(113, 40);
             this.BtnAdd.TabIndex = 21;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.UseVisualStyleBackColor = false;
@@ -103,10 +100,10 @@ namespace WinFormsApp1
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 71);
+            this.pictureBox1.Size = new System.Drawing.Size(102, 41);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
             // 
@@ -114,49 +111,47 @@ namespace WinFormsApp1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(661, 100);
+            this.label1.Location = new System.Drawing.Point(578, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 23);
+            this.label1.Size = new System.Drawing.Size(203, 19);
             this.label1.TabIndex = 18;
             this.label1.Text = "Create new defect categories";
             // 
             // listBoxFailCategories
             // 
             this.listBoxFailCategories.FormattingEnabled = true;
-            this.listBoxFailCategories.ItemHeight = 20;
-            this.listBoxFailCategories.Location = new System.Drawing.Point(51, 129);
-            this.listBoxFailCategories.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxFailCategories.ItemHeight = 15;
+            this.listBoxFailCategories.Location = new System.Drawing.Point(45, 97);
             this.listBoxFailCategories.Name = "listBoxFailCategories";
-            this.listBoxFailCategories.Size = new System.Drawing.Size(439, 224);
+            this.listBoxFailCategories.Size = new System.Drawing.Size(385, 169);
             this.listBoxFailCategories.TabIndex = 27;
             this.listBoxFailCategories.SelectedIndexChanged += new System.EventHandler(this.listBoxFailCategories_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(183, 13);
+            this.label2.Location = new System.Drawing.Point(160, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 28;
             this.label2.Text = "Current Path:";
             // 
             // labelcurrentpath
             // 
             this.labelcurrentpath.AutoSize = true;
-            this.labelcurrentpath.Location = new System.Drawing.Point(278, 13);
+            this.labelcurrentpath.Location = new System.Drawing.Point(243, 10);
             this.labelcurrentpath.Name = "labelcurrentpath";
-            this.labelcurrentpath.Size = new System.Drawing.Size(0, 20);
+            this.labelcurrentpath.Size = new System.Drawing.Size(0, 15);
             this.labelcurrentpath.TabIndex = 29;
             // 
             // BtnRename
             // 
-            this.BtnRename.BackColor = System.Drawing.Color.Gold;
+            this.BtnRename.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(156)))), ((int)(((byte)(12)))));
             this.BtnRename.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRename.ForeColor = System.Drawing.Color.White;
-            this.BtnRename.Location = new System.Drawing.Point(51, 363);
-            this.BtnRename.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnRename.Location = new System.Drawing.Point(126, 345);
             this.BtnRename.Name = "BtnRename";
-            this.BtnRename.Size = new System.Drawing.Size(114, 31);
+            this.BtnRename.Size = new System.Drawing.Size(100, 40);
             this.BtnRename.TabIndex = 31;
             this.BtnRename.Text = "Rename";
             this.BtnRename.UseVisualStyleBackColor = false;
@@ -164,13 +159,12 @@ namespace WinFormsApp1
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gold;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(51, 440);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(243, 345);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 31);
+            this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 30;
             this.button1.Text = "Delete ";
             this.button1.UseVisualStyleBackColor = false;
@@ -178,30 +172,28 @@ namespace WinFormsApp1
             // 
             // textBoxOldName
             // 
-            this.textBoxOldName.Location = new System.Drawing.Point(297, 364);
-            this.textBoxOldName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxOldName.Location = new System.Drawing.Point(194, 279);
             this.textBoxOldName.Name = "textBoxOldName";
             this.textBoxOldName.ReadOnly = true;
-            this.textBoxOldName.Size = new System.Drawing.Size(194, 27);
+            this.textBoxOldName.Size = new System.Drawing.Size(170, 23);
             this.textBoxOldName.TabIndex = 32;
             this.textBoxOldName.Text = "Select a Category from the list";
             this.textBoxOldName.TextChanged += new System.EventHandler(this.textBoxOldName_TextChanged);
             // 
             // textBoxNewName
             // 
-            this.textBoxNewName.Location = new System.Drawing.Point(297, 403);
-            this.textBoxNewName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxNewName.Location = new System.Drawing.Point(194, 308);
             this.textBoxNewName.Name = "textBoxNewName";
-            this.textBoxNewName.Size = new System.Drawing.Size(194, 27);
+            this.textBoxNewName.Size = new System.Drawing.Size(170, 23);
             this.textBoxNewName.TabIndex = 33;
             this.textBoxNewName.TextChanged += new System.EventHandler(this.textBoxNewName_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(183, 364);
+            this.label4.Location = new System.Drawing.Point(94, 279);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.Size = new System.Drawing.Size(85, 15);
             this.label4.TabIndex = 34;
             this.label4.Text = "Current Name:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -209,19 +201,19 @@ namespace WinFormsApp1
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(199, 403);
+            this.label5.Location = new System.Drawing.Point(108, 308);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.Size = new System.Drawing.Size(69, 15);
             this.label5.TabIndex = 35;
             this.label5.Text = "New Name:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form5
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1021, 501);
+            this.ClientSize = new System.Drawing.Size(893, 406);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxNewName);
@@ -237,8 +229,9 @@ namespace WinFormsApp1
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.Text = "Edit Previous Defect Categories";
             this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
