@@ -22,6 +22,8 @@ namespace WinFormsApp1
         int nTotalNumber = 0;
         int nCurrentItem = 0;
         int firstImage = 1;
+        double totalPercent;
+        int totalValue;
 
         public void endOfSession() //taken from pass and fail button catch section
         {
@@ -39,7 +41,8 @@ namespace WinFormsApp1
             linkLabel1.Visible = false;
             linkLabel2.Visible = false;
 
-            String sessionFolder = latestSession.ToString();
+            string sessionFolder = latestSession.ToString();
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
             ImageFileNames = Directory.GetFiles(sessionFolder).ToList();
 
             try
@@ -69,11 +72,34 @@ namespace WinFormsApp1
             {
                 nTotalNumber = ImageFileNames.Count;
                 ImageUploadCounter.Text = nTotalNumber.ToString();
-                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
+
+                totalPercent = ((double)firstImage / nTotalNumber) * 100;
+                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString() + " (" + totalPercent.ToString("0.##") +"%"+ ")";
+
                 progressBarCounter.Maximum = nTotalNumber;
                 progressBarCounter.Value = 1;
                 progressBarCounter.Step = 1;
 
+            }
+            using (StreamReader f1 = new StreamReader(Path.Combine(failFolder + @"\totalImage.txt")))
+            {
+                //int fail_value = Convert.ToInt32(f1.ReadLine());
+                totalValue = int.Parse(f1.ReadLine());
+                
+
+                DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
+                FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
+
+                double passValue;
+                passValue = ((double)file.Length / totalValue) * 100;
+                txtPass.Text = passValue.ToString("0.##") + "%";
+
+                double failPercent;
+                int fail_value = Convert.ToInt32(failCounter.Text);
+                failPercent = ((double)fail_value / totalValue) * 100;
+                txtFail.Text = failPercent.ToString("0.##") + "%";
+
+                f1.Close();
             }
         }
 
@@ -85,12 +111,8 @@ namespace WinFormsApp1
             DirectoryInfo d = new DirectoryInfo(Path.Combine(latestSession.ToString() + @"\Pass"));
             FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
 
-            
 
-            if (file != null)
-            {
-                passCounter.Text = file.Length.ToString();
-            }
+           passCounter.Text = file.Length.ToString();
 
             string failCount = Path.Combine(latestSession.ToString(), "Fail");
             string curFileFailed = Path.Combine(failCount + @"\FailCounter.txt");
@@ -137,7 +159,8 @@ namespace WinFormsApp1
                 endOfSession();
             }
 
-            imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
+            totalPercent = ((double)firstImage / nTotalNumber) * 100;
+            imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString() + " (" + totalPercent.ToString("0.##") +"%"+ ")";
         }
 
         //load images
@@ -210,7 +233,7 @@ namespace WinFormsApp1
                 {
                     MessageBox.Show("Please select any defect category");
                 }
-                else if (MessageBox.Show("Are u confirm with the defect categories?", "Fail image", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                else if (MessageBox.Show("Are you confirm with the defect categories?", "Fail image", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     var tempDefectCategory = "";
                     string FullPathName = "";
@@ -247,12 +270,19 @@ namespace WinFormsApp1
                     fail_value++;
                     failCounter.Text = fail_value.ToString();
 
+
+                    double failPercent;
+
+                    failPercent = ((double)fail_value / totalValue) * 100;
+                    txtFail.Text = failPercent.ToString("0.##") + "%";
+
                     using (StreamWriter f1 = new StreamWriter(Path.Combine(failFolder + @"\FailCounter.txt")))
                     {
                         f1.Flush();
                         f1.WriteLine(failCounter.Text);
                         f1.Close();
                     }
+
                 }
             }
             catch (Exception ex)
@@ -290,6 +320,11 @@ namespace WinFormsApp1
 
                     passCounter.Text = file.Length.ToString();
                     nImagePassed++;
+
+                    double passPercent;
+                    passPercent = ((double)file.Length / totalValue) * 100;
+                    txtPass.Text = passPercent.ToString("0.##") + "%";
+
                 }
                 catch (Exception ex)
                 {
@@ -340,6 +375,11 @@ namespace WinFormsApp1
             {
                 listBoxFailCategories.Items.Add(Path.GetFileName(dir));
             }
+        }
+
+        private void listBoxFailCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

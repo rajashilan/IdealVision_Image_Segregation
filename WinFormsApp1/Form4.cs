@@ -20,6 +20,8 @@ namespace WinFormsApp1
         int nTotalNumber = 0;
         int nCurrentItem = 0;
         int firstImage = 1;
+        double totalPercent;
+
 
         public void endOfSession() //taken from pass and fail button catch section
         {
@@ -51,6 +53,8 @@ namespace WinFormsApp1
 
             String sessionFolder = latestSession.ToString();
             ImageFileNames = Directory.GetFiles(sessionFolder).ToList();
+            string failFolder = Path.Combine(latestSession.ToString(), "Fail");
+
 
             try
             {
@@ -73,10 +77,21 @@ namespace WinFormsApp1
             {
                 nTotalNumber = ImageFileNames.Count;
                 ImageUploadCounter.Text = nTotalNumber.ToString();
-                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
+
+                totalPercent = ((double)firstImage / nTotalNumber) * 100;
+
+                imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString() + " ("+ totalPercent.ToString("0.##")+"%"+")";
+
                 progressBarCounter.Maximum = nTotalNumber;
                 progressBarCounter.Value = 1;
                 progressBarCounter.Step = 1;
+
+            }
+            using (var f1 = new StreamWriter(Path.Combine(failFolder + @"\totalImage.txt")))
+            {
+                f1.Flush();
+                f1.WriteLine(nTotalNumber);
+                f1.Close();
             }
         }
 
@@ -108,8 +123,9 @@ namespace WinFormsApp1
                 label5.Visible = true;
                 endOfSession();
             }
+            totalPercent = ((double)firstImage / nTotalNumber) * 100;
 
-            imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString();
+            imgCounter.Text = firstImage.ToString() + " / " + nTotalNumber.ToString() + " (" + totalPercent.ToString("0.##") + "%"+")";
         }
         
         private void label1_Click(object sender, EventArgs e)
@@ -161,7 +177,7 @@ namespace WinFormsApp1
                 {
                     MessageBox.Show("Please select any defect category");
                 }
-                else if (MessageBox.Show("Are u confirm with the defect categories?", "Fail image", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                else if (MessageBox.Show("Are you confirm with the defect categories?", "Fail image", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     var tempDefectCategory = "";
                     string FullPathName="";
@@ -198,12 +214,19 @@ namespace WinFormsApp1
                     fail_value++;
                     failCounter.Text = fail_value.ToString();
 
+                    double failPercent;
+
+                    failPercent = ((double)fail_value / nTotalNumber) * 100;
+                    txtFail.Text = failPercent.ToString("0.##")+"%";
+
+
                     using (StreamWriter f1 = new StreamWriter(Path.Combine(failFolder + @"\FailCounter.txt")))
                     {
                         f1.Flush();
                         f1.WriteLine(failCounter.Text);
                         f1.Close();
                     }
+
                 }
             }
 
@@ -248,7 +271,12 @@ namespace WinFormsApp1
                     listViewPass.Items.Add(listViewItem);//add to list view (img name only)
 
                     passCounter.Text = file.Length.ToString();
+
                     nImagePassed++;
+
+                    double passPercent;
+                    passPercent = ((double)file.Length / nTotalNumber) * 100;
+                    txtPass.Text = passPercent.ToString("0.##") + "%";
                 }
                 catch (Exception ex)
                 {
