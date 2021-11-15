@@ -381,5 +381,17 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void passCounter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Welcome f1 = new Welcome();
+            this.Close();
+            f1.ShowDialog();
+        }
     }
 }

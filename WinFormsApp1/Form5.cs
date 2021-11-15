@@ -25,6 +25,7 @@ namespace WinFormsApp1
             labelcurrentpath.Text = Value;
             listBoxFailCategories.Items.Clear();
             string[] dirs = Directory.GetDirectories(labelcurrentpath.Text);
+            string[] files = Directory.GetFiles(labelcurrentpath.Text);
 
             foreach (string dir in dirs)
             {
@@ -151,13 +152,24 @@ namespace WinFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string path = labelcurrentpath.Text;
+            
+            
             //remove defect category
             if (listBoxFailCategories.SelectedIndex != -1)
             {
-                string remove = listBoxFailCategories.SelectedItem.ToString();
-
-                Directory.Delete(Path.Combine(path + remove));
-                MessageBox.Show("Defect Categories Deleted");
+                string pathc = Path.Combine(path, listBoxFailCategories.SelectedItem.ToString());
+                DirectoryInfo d = new DirectoryInfo(pathc);
+                FileInfo[] file = d.GetFiles("*", SearchOption.AllDirectories);
+                if (file.Length != 0)
+                {
+                    MessageBox.Show("This Defect Category contain screened images. It cannot been remove.");
+                }
+                else 
+                {
+                    string remove = listBoxFailCategories.SelectedItem.ToString();
+                    Directory.Delete(Path.Combine(path + remove));
+                    MessageBox.Show("Defect Categories Deleted");
+                }
             }
 
             else
