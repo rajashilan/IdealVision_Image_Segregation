@@ -347,7 +347,7 @@ namespace WinFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1199, 513);
+            this.ClientSize = new System.Drawing.Size(1301, 513);
             this.Controls.Add(this.txtFail);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label1);
